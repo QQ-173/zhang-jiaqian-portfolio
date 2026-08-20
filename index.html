@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="张家倩创意视觉作品集：动态影像、品牌产品视觉、三维场景与视觉叙事。">
+  <title>ZHANG JIAQIAN — Creative Visual Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home">ZJQ<span>®</span></a>
+    <nav aria-label="主导航">
+      <a href="#work">WORK</a>
+      <a href="#archive">PROFILE</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+    <p>PORTFOLIO / 2026</p>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="light-field" aria-hidden="true"></div>
+      <p class="hero-role">DIRECTOR / CREATIVE / VISUAL ARTIST</p>
+      <h1 id="hero-title"><span>ZHANG</span><span>JIAQIAN</span></h1>
+
+      <div class="stage-shell">
+        <canvas id="carousel-canvas" aria-label="可拖动旋转的三维木马。点击三匹马可查看不同作品方向。"></canvas>
+        <div class="canvas-loading" aria-live="polite">BUILDING THE STAGE ···</div>
+        <div class="stage-shadow" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero-copy">
+        <p class="index">01 / CREATIVE VISUAL</p>
+        <h2>把叙事、空间与动态<br>变成可感知的视觉体验。</h2>
+        <p>关注从创意概念、视觉风格到动态落地的完整表达。</p>
+      </div>
+
+      <div class="stage-guide">
+        <p>DRAG TO ORBIT · CLICK A HORSE</p>
+        <div class="guide-options" role="group" aria-label="选择作品方向">
+          <button type="button" data-focus="motion"><span>01</span>MOTION</button>
+          <button type="button" data-focus="product"><span>02</span>PRODUCT</button>
+          <button type="button" data-focus="worlds"><span>03</span>WORLDS</button>
+        </div>
+      </div>
+
+      <aside class="carousel-reveal" aria-live="polite" aria-hidden="true">
+        <button class="reveal-close" type="button" aria-label="关闭木马内容卡">×</button>
+        <p class="reveal-index">HORSE 01 / MOTION</p>
+        <h2>THE MOTION<br>ARCHIVE</h2>
+        <div class="reveal-thumbs" aria-hidden="true"><img src="assets/game-murder.jpg" alt=""><img src="assets/white-snake.jpg" alt=""></div>
+        <p class="reveal-copy">4条投放视频与1组动态视觉作品</p>
+        <button class="reveal-enter" type="button">OPEN THIS ARCHIVE ↘</button>
+      </aside>
+
+      <button class="archive-plaque" type="button"><span>PROFILE</span>OPEN THE BASE ARCHIVE ↘</button>
+
+      <button class="floating-tag tag-one" type="button">AVAILABLE / 2026</button>
+      <button class="floating-tag tag-two" type="button">DRAG ME ✦</button>
+
+      <a class="scroll-cue" href="#work"><span>ENTER THE ARCHIVE</span><span>↓</span></a>
+    </section>
+
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="work-heading reveal">
+        <p>02 / SELECTED WORK</p>
+        <h2 id="work-title">ONE PRACTICE,<br>MULTIPLE FORMS.</h2>
+        <div>
+          <p>互联网版 / 初版分类</p>
+          <p>以商业传播与内容体验为主线，将跨媒介能力整理成四类可读证据。</p>
+        </div>
+      </div>
+
+      <div class="filter-bar reveal" role="group" aria-label="作品筛选">
+        <button class="active" type="button" data-filter="all">ALL <span>06</span></button>
+        <button type="button" data-filter="motion">MOTION <span>02</span></button>
+        <button type="button" data-filter="product">PRODUCT <span>01</span></button>
+        <button type="button" data-filter="worlds">WORLDS <span>03</span></button>
+      </div>
+
+      <div class="project-grid">
+        <article class="project project-wide reveal" data-category="motion">
+          <button class="project-media landscape" type="button" data-video="assets/white-snake.mp4" data-poster="assets/white-snake.jpg" data-caption="《白蛇》AI动态视觉 / 2025">
+            <img src="assets/white-snake.jpg" alt="青绿色未来城市与白蛇主题动态视觉画面">
+            <span class="play">PLAY 00:18 ↗</span>
+          </button>
+          <div class="project-info">
+            <p>01 / HERO PROJECT</p>
+            <h3>《白蛇》AI动态视觉</h3>
+            <p>创意策划 · 叙事结构 · 视觉风格 · AIGC生成 · 后期优化</p>
+            <div class="metric"><strong>5,000+</strong><span>线上投票 / 最佳人气奖</span></div>
+          </div>
+        </article>
+
+        <article class="project project-game-suite reveal" data-category="motion">
+          <div class="project-info">
+            <p>02 / PERFORMANCE CREATIVE</p>
+            <h3>点点互动 · 海外游戏广告组</h3>
+            <p>脚本拆解 · 分镜构思 · AI素材 · 剪辑与多版本测试</p>
+            <div class="metric"><strong>4 FILMS</strong><span>实习产出视频精选</span></div>
+          </div>
+          <div class="video-reel">
+            <button class="reel-item" type="button" data-video="assets/game-hospital.mp4" data-poster="assets/game-hospital.jpg" data-caption="点点互动投放素材 01 / 剧情反转">
+              <img src="assets/game-hospital.jpg" alt="点点互动剧情向投放视频画面"><span><b>01</b>剧情反转 · 60s</span>
+            </button>
+            <button class="reel-item" type="button" data-video="assets/game-bakery.mp4" data-poster="assets/game-bakery.jpg" data-caption="点点互动投放素材 02 / 烘焙店情节">
+              <img src="assets/game-bakery.jpg" alt="点点互动烘焙店剧情投放视频画面"><span><b>02</b>烘焙店情节 · 33s</span>
+            </button>
+            <button class="reel-item" type="button" data-video="assets/game-wedding.mp4" data-poster="assets/game-wedding.jpg" data-caption="点点互动情景选择 / 婚礼风波">
+              <img src="assets/game-wedding.jpg" alt="婚礼风波情景选择视频画面"><span><b>03</b>婚礼风波 · 28s</span>
+            </button>
+            <button class="reel-item" type="button" data-video="assets/game-murder.mp4" data-poster="assets/game-murder.jpg" data-caption="点点互动情景选择 / 谁是凶手">
+              <img src="assets/game-murder.jpg" alt="谁是凶手情景选择视频画面"><span><b>04</b>谁是凶手 · 51s</span>
+            </button>
+          </div>
+          <p class="suite-note"><strong>334.1K</strong> 单条素材最高预估曝光 · 多条素材预估曝光超过100K</p>
+        </article>
+
+        <article class="project project-product reveal" data-category="product">
+          <button class="project-media landscape" type="button" data-image="assets/emox-ui.jpg" data-caption="EMOX心理产品视觉系统 / App与品牌内容">
+            <img src="assets/emox-ui.jpg" alt="心理产品App界面与三维手机样机展示">
+            <span class="play">VIEW SYSTEM ↗</span>
+          </button>
+          <div class="project-info">
+            <p>03 / PRODUCT & BRAND</p>
+            <h3>EMOX 心理产品视觉</h3>
+            <p>App视觉 · 品牌内容 · 官网与活动物料 · 视觉资产整理</p>
+            <div class="metric"><strong>60+</strong><span>多平台视觉内容</span></div>
+          </div>
+        </article>
+
+        <article class="project project-still reveal" data-category="worlds">
+          <button class="project-media portrait still" type="button" data-image="assets/still-life.jpg" data-caption="中式陈设 / Blender三维静物练习">
+            <img src="assets/still-life.jpg" alt="暖色中式花瓶、油灯与水果三维静物">
+            <span class="play">ENLARGE ↗</span>
+          </button>
+          <div class="project-info">
+            <p>04 / 3D IMAGE MAKING</p>
+            <h3>中式陈设</h3>
+            <p>空间整合 · 材质灯光 · 构图层次 · 叙事氛围</p>
+          </div>
+        </article>
+
+        <article class="project project-wide reveal" data-category="worlds">
+          <button class="project-media landscape" type="button" data-image="assets/stage.jpg" data-caption="《聂小倩》3D影视场景与气氛设定">
+            <img src="assets/stage.jpg" alt="古代戏台空间气氛设定图">
+            <span class="play">VIEW WORLD ↗</span>
+          </button>
+          <div class="project-info">
+            <p>05 / WORLD BUILDING</p>
+            <h3>《聂小倩》场景与气氛</h3>
+            <p>组长 / 场景主设计 · Blender建模 · 材质渲染 · 镜头预览</p>
+            <div class="metric"><strong>7</strong><span>组核心动态预览</span></div>
+          </div>
+        </article>
+
+        <article class="project project-documentary reveal" data-category="worlds">
+          <button class="project-media landscape" type="button" data-video="assets/fisher-voice.mp4" data-poster="assets/fisher-voice.jpg" data-caption="纪录片《渔声》/ 影像叙事">
+            <img src="assets/fisher-voice.jpg" alt="纪录片渔民人物采访画面">
+            <span class="play">PLAY 00:18 ↗</span>
+          </button>
+          <div class="project-info">
+            <p>06 / DOCUMENTARY</p>
+            <h3>《渔声》</h3>
+            <p>人物观察 · 现场拍摄 · 采访组织 · 纪录影像叙事</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="archive-section" id="archive" aria-labelledby="archive-title">
+      <div class="archive-heading reveal">
+        <p>03 / PERSONAL ARCHIVE</p>
+        <h2 id="archive-title">THE PERSON<br>BEHIND THE IMAGES.</h2>
+      </div>
+
+      <div class="archive-scene reveal">
+        <button class="loose-photo photo-a" type="button" data-image="assets/line-art.jpg" data-caption="空间线稿练习"><img src="assets/line-art.jpg" alt="街道建筑空间线稿"><span>SKETCH / 01</span></button>
+        <button class="loose-photo photo-b" type="button" data-image="assets/still-life.jpg" data-caption="三维静物练习"><img src="assets/still-life.jpg" alt="中式三维静物"><span>3D / 02</span></button>
+
+        <article class="archive-book">
+          <section class="book-page page-left">
+            <p class="stamp">PROFILE / 01</p>
+            <div class="portrait-placeholder"><span>PORTRAIT</span><strong>照片待补充</strong><small>CLICKABLE PHOTO<br>COMING SOON</small></div>
+            <h3>ZHANG<br>JIAQIAN</h3>
+            <p class="cn-name">张家倩</p>
+            <dl>
+              <div><dt>ROLE</dt><dd>Creative Visual Designer</dd></div>
+              <div><dt>EDUCATION</dt><dd>山东工艺美术学院<br>戏剧影视美术设计 · 本科</dd></div>
+              <div><dt>GPA</dt><dd>3.85 / 4.0 · 专业前5%</dd></div>
+              <div><dt>FOCUS</dt><dd>Motion · 3D · AIGC · Storytelling</dd></div>
+              <div><dt>CONTACT</dt><dd>2072309456@qq.com</dd></div>
+            </dl>
+            <p class="paper-note">生命是一棵<br>长满可能的树。</p>
+          </section>
+
+          <div class="binding" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+          <section class="book-page page-right">
+            <p class="stamp">EXPERIENCE / 02</p>
+            <p class="script">Experiences</p>
+            <h3>IDEAS NEED<br>A VISUAL BODY.</h3>
+            <p class="bio">我擅长从脚本、分镜与视觉风格出发，把创意推进到动态影像、三维空间和生成式内容的实际落地。</p>
+            <div class="timeline">
+              <article><time>2026.07 — NOW</time><h4>点点互动 · AI美术创意实习生</h4><p>海外投放视频策划、AIGC素材与多版本创意测试。</p></article>
+              <article><time>2025.07 — 2025.10</time><h4>乐达心屿 · 视觉设计</h4><p>App、官网、品牌内容及B端活动视觉。</p></article>
+              <article><time>2023.09 — 2027.06</time><h4>山东工艺美术学院</h4><p>数字艺术与传媒学院 · 戏剧影视美术设计。</p></article>
+            </div>
+            <div class="skill-strip"><span>AE / PR</span><span>PS</span><span>BLENDER</span><span>AIGC</span></div>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <p class="footer-index">04 / CONTACT</p>
+    <h2>LET'S MAKE<br>SOMETHING VISUAL.</h2>
+    <a href="mailto:2072309456@qq.com">2072309456@QQ.COM ↗</a>
+    <a href="#home">BACK TO TOP ↑</a>
+  </footer>
+
+  <dialog class="lightbox" aria-label="作品预览">
+    <button class="lightbox-close" type="button" aria-label="关闭预览">×</button>
+    <div class="lightbox-media"><img src="" alt=""><video controls playsinline></video></div>
+    <p></p>
+  </dialog>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
