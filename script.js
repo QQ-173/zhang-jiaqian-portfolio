@@ -179,12 +179,17 @@ filterButtons.forEach(button=>button.addEventListener('click',()=>setFilter(butt
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 
-const dialog=document.querySelector('.lightbox'), dialogImage=dialog.querySelector('img'), dialogVideo=dialog.querySelector('video'), dialogCaption=dialog.querySelector(':scope > p');
+const dialog=document.querySelector('.lightbox'), dialogImage=dialog.querySelector('img'), dialogVideo=dialog.querySelector('video'), dialogCaption=dialog.querySelector('.lightbox-caption'), dialogStatus=dialog.querySelector('.lightbox-status strong'), dialogOpen=dialog.querySelector('.lightbox-open');
 document.querySelectorAll('[data-image],[data-video]').forEach(trigger=>trigger.addEventListener('click',()=>{
   const isVideo=Boolean(trigger.dataset.video);dialogCaption.textContent=trigger.dataset.caption||'';dialogImage.hidden=isVideo;dialogVideo.hidden=!isVideo;
-  if(isVideo){dialogVideo.poster=trigger.dataset.poster||'';dialogVideo.src=trigger.dataset.video;dialogVideo.play().catch(()=>{})}else{dialogImage.src=trigger.dataset.image;dialogImage.alt=trigger.dataset.caption||'作品图片预览'}
   dialog.showModal();
+  if(isVideo){
+    dialogStatus.textContent=`LOADING FULL FILM · ${trigger.dataset.duration||'--:--'}`;dialogOpen.href=new URL(trigger.dataset.video,document.baseURI).href;dialogOpen.hidden=false;
+    dialogVideo.poster=trigger.dataset.poster||'';dialogVideo.src=trigger.dataset.video;dialogVideo.load();dialogVideo.play().catch(()=>{});
+  }else{dialogStatus.textContent='IMAGE PREVIEW';dialogOpen.hidden=true;dialogImage.src=trigger.dataset.image;dialogImage.alt=trigger.dataset.caption||'作品图片预览'}
 }));
-function closeDialog(){dialogVideo.pause();dialogVideo.removeAttribute('src');dialogVideo.load();dialog.close()}
+dialogVideo.addEventListener('loadedmetadata',()=>{const total=Math.round(dialogVideo.duration);dialogStatus.textContent=`FULL FILM READY · ${Math.floor(total/60).toString().padStart(2,'0')}:${(total%60).toString().padStart(2,'0')}`});
+dialogVideo.addEventListener('error',()=>{dialogStatus.textContent='PLAYER ERROR · USE ORIGINAL FILE LINK'});
+function closeDialog(){dialogVideo.pause();dialogVideo.removeAttribute('src');dialogVideo.load();dialogOpen.hidden=true;dialog.close()}
 dialog.querySelector('.lightbox-close').addEventListener('click',closeDialog);
 dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDialog()});
