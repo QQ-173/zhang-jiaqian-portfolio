@@ -118,7 +118,7 @@ const portal = document.querySelector('.carousel-reveal');
 const portalData = {
   motion:{index:'HORSE 01 / MOTION',title:'THE MOTION<br>ARCHIVE',copy:'4条点点互动投放视频与1组动态视觉作品',images:['assets/game-murder.jpg','assets/white-snake.jpg']},
   product:{index:'HORSE 02 / PRODUCT',title:'THE PRODUCT<br>ARCHIVE',copy:'App、官网与品牌内容的完整视觉系统',images:['assets/emox-ui.jpg','assets/emox.jpg']},
-  worlds:{index:'HORSE 03 / WORLDS',title:'THE WORLDS<br>ARCHIVE',copy:'三维场景、气氛设计与纪录影像',images:['assets/stage.jpg','assets/still-life.jpg']}
+  worlds:{index:'HORSE 03 / WORLDS',title:'THE WORLDS<br>ARCHIVE',copy:'动态环境、空间气氛与纪录影像',images:['assets/world-garden.jpg','assets/stage.jpg']}
 };
 function openPortal(category){
   const data=portalData[category];
