@@ -117,7 +117,7 @@ const categoryAngles={motion:0,product:-Math.PI*2/3,worlds:-Math.PI*4/3};
 const portal = document.querySelector('.carousel-reveal');
 const portalData = {
   motion:{index:'HORSE 01 / MOTION',title:'THE MOTION<br>ARCHIVE',copy:'4条点点互动投放视频与1组动态视觉作品',images:['assets/game-murder.jpg','assets/white-snake.jpg']},
-  product:{index:'HORSE 02 / PRODUCT',title:'THE PRODUCT<br>ARCHIVE',copy:'App、官网与品牌内容的完整视觉系统',images:['assets/emox-ui.jpg','assets/emox.jpg']},
+  product:{index:'HORSE 02 / PRODUCT',title:'THE PRODUCT<br>ARCHIVE',copy:'产品视觉与IP角色系统的完整设计证据',images:['assets/emox-ui.jpg','assets/juanjuan-ip-01.jpg']},
   worlds:{index:'HORSE 03 / WORLDS',title:'THE WORLDS<br>ARCHIVE',copy:'动态环境、气氛设定、分镜与纪录影像',images:['assets/world-garden.jpg','assets/mood-02.jpg']}
 };
 function openPortal(category){
@@ -194,6 +194,10 @@ const gallerySets={
     {src:'assets/storyboard-03.png',caption:'幻想短片 · 手绘动态分镜 · 第03页 / 镜头10—14'},
     {src:'assets/storyboard-04.png',caption:'幻想短片 · 手绘动态分镜 · 第04页 / 镜头15—19'},
     {src:'assets/storyboard-05.png',caption:'幻想短片 · 手绘动态分镜 · 第05页 / 镜头20'}
+  ],
+  juanjuan:[
+    {src:'assets/juanjuan-ip-01.jpg',caption:'PawTribe · 卷卷IP设计 · 角色设定 / 三视图 / 表情与周边'},
+    {src:'assets/juanjuan-ip-02.jpg',caption:'PawTribe · 卷卷IP设计 · 动作 / 节日装扮 / 品牌空间'}
   ]
 };
 let activeGallery=null,activeGalleryIndex=0;
