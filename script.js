@@ -187,6 +187,13 @@ const gallerySets={
     {src:'assets/mood-02.jpg',caption:'古建空间气氛设定 · 室内戏台 · 02 / 04'},
     {src:'assets/mood-03.jpg',caption:'古建空间气氛设定 · 室外日景 · 03 / 04'},
     {src:'assets/mood-04.jpg',caption:'古建空间气氛设定 · 室外夜景 · 04 / 04'}
+  ],
+  storyboard:[
+    {src:'assets/storyboard-01.png',caption:'幻想短片 · 手绘动态分镜 · 第01页 / 镜头01—05'},
+    {src:'assets/storyboard-02.png',caption:'幻想短片 · 手绘动态分镜 · 第02页 / 镜头06—09'},
+    {src:'assets/storyboard-03.png',caption:'幻想短片 · 手绘动态分镜 · 第03页 / 镜头10—14'},
+    {src:'assets/storyboard-04.png',caption:'幻想短片 · 手绘动态分镜 · 第04页 / 镜头15—19'},
+    {src:'assets/storyboard-05.png',caption:'幻想短片 · 手绘动态分镜 · 第05页 / 镜头20'}
   ]
 };
 let activeGallery=null,activeGalleryIndex=0;
