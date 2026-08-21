@@ -118,7 +118,7 @@ const portal = document.querySelector('.carousel-reveal');
 const portalData = {
   motion:{index:'HORSE 01 / MOTION',title:'THE MOTION<br>ARCHIVE',copy:'4条点点互动投放视频与1组动态视觉作品',images:['assets/game-murder.jpg','assets/white-snake.jpg']},
   product:{index:'HORSE 02 / PRODUCT',title:'THE PRODUCT<br>ARCHIVE',copy:'App、官网与品牌内容的完整视觉系统',images:['assets/emox-ui.jpg','assets/emox.jpg']},
-  worlds:{index:'HORSE 03 / WORLDS',title:'THE WORLDS<br>ARCHIVE',copy:'动态环境、空间气氛与纪录影像',images:['assets/world-garden.jpg','assets/stage.jpg']}
+  worlds:{index:'HORSE 03 / WORLDS',title:'THE WORLDS<br>ARCHIVE',copy:'动态环境、气氛设定、分镜与纪录影像',images:['assets/world-garden.jpg','assets/mood-02.jpg']}
 };
 function openPortal(category){
   const data=portalData[category];
@@ -179,17 +179,32 @@ filterButtons.forEach(button=>button.addEventListener('click',()=>setFilter(butt
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 
-const dialog=document.querySelector('.lightbox'), dialogImage=dialog.querySelector('img'), dialogVideo=dialog.querySelector('video'), dialogCaption=dialog.querySelector('.lightbox-caption'), dialogStatus=dialog.querySelector('.lightbox-status strong'), dialogOpen=dialog.querySelector('.lightbox-open');
-document.querySelectorAll('[data-image],[data-video]').forEach(trigger=>trigger.addEventListener('click',()=>{
-  const isVideo=Boolean(trigger.dataset.video);dialogCaption.textContent=trigger.dataset.caption||'';dialogImage.hidden=isVideo;dialogVideo.hidden=!isVideo;
-  dialog.showModal();
-  if(isVideo){
-    dialogStatus.textContent=`LOADING FULL FILM · ${trigger.dataset.duration||'--:--'}`;dialogOpen.href=new URL(trigger.dataset.video,document.baseURI).href;dialogOpen.hidden=false;
-    dialogVideo.poster=trigger.dataset.poster||'';dialogVideo.src=trigger.dataset.video;dialogVideo.load();dialogVideo.play().catch(()=>{});
-  }else{dialogStatus.textContent='IMAGE PREVIEW';dialogOpen.hidden=true;dialogImage.src=trigger.dataset.image;dialogImage.alt=trigger.dataset.caption||'作品图片预览'}
+const dialog=document.querySelector('.lightbox'), dialogImage=dialog.querySelector('img'), dialogVideo=dialog.querySelector('video'), dialogCaption=dialog.querySelector('.lightbox-caption'), dialogType=dialog.querySelector('.lightbox-status span'), dialogStatus=dialog.querySelector('.lightbox-status strong'), dialogOpen=dialog.querySelector('.lightbox-open'), dialogPrev=dialog.querySelector('.lightbox-prev'), dialogNext=dialog.querySelector('.lightbox-next');
+const gallerySets={
+  emox:Array.from({length:16},(_,i)=>({src:`assets/emox-gallery-${String(i+1).padStart(2,'0')}.jpg`,caption:`EMOX 心理产品视觉系统 · ${String(i+1).padStart(2,'0')} / 16`})),
+  mood:[
+    {src:'assets/mood-01.jpg',caption:'古建空间气氛设定 · 室内生活空间 · 01 / 04'},
+    {src:'assets/mood-02.jpg',caption:'古建空间气氛设定 · 室内戏台 · 02 / 04'},
+    {src:'assets/mood-03.jpg',caption:'古建空间气氛设定 · 室外日景 · 03 / 04'},
+    {src:'assets/mood-04.jpg',caption:'古建空间气氛设定 · 室外夜景 · 04 / 04'}
+  ]
+};
+let activeGallery=null,activeGalleryIndex=0;
+function openDialog(){if(!dialog.open){if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','')}}
+function setGalleryImage(index){const items=gallerySets[activeGallery];activeGalleryIndex=(index+items.length)%items.length;const item=items[activeGalleryIndex];dialogImage.src=item.src;dialogImage.alt=item.caption;dialogCaption.textContent=item.caption;dialogStatus.textContent=`IMAGE GALLERY · ${String(activeGalleryIndex+1).padStart(2,'0')} / ${String(items.length).padStart(2,'0')}`;dialogOpen.href=new URL(item.src,document.baseURI).href;dialogOpen.hidden=false;dialogPrev.hidden=false;dialogNext.hidden=false}
+document.querySelectorAll('[data-image],[data-video],[data-gallery]').forEach(trigger=>trigger.addEventListener('click',()=>{
+  const isVideo=Boolean(trigger.dataset.video),isGallery=Boolean(trigger.dataset.gallery);dialogImage.hidden=isVideo;dialogVideo.hidden=!isVideo;activeGallery=null;dialogPrev.hidden=true;dialogNext.hidden=true;
+  if(isVideo){dialogType.textContent='FULL FILM PLAYER';dialogCaption.textContent=trigger.dataset.caption||'';dialogStatus.textContent=`LOADING FULL FILM · ${trigger.dataset.duration||'--:--'}`;dialogOpen.href=new URL(trigger.dataset.video,document.baseURI).href;dialogOpen.hidden=false;dialogVideo.poster=trigger.dataset.poster||'';dialogVideo.src=trigger.dataset.video;dialogVideo.load()}
+  else if(isGallery){dialogType.textContent='IMAGE GALLERY';activeGallery=trigger.dataset.gallery;setGalleryImage(Number(trigger.dataset.galleryIndex)||0)}
+  else{dialogType.textContent='IMAGE VIEWER';dialogCaption.textContent=trigger.dataset.caption||'';dialogStatus.textContent='IMAGE PREVIEW';dialogOpen.href=new URL(trigger.dataset.image,document.baseURI).href;dialogOpen.hidden=false;dialogImage.src=trigger.dataset.image;dialogImage.alt=trigger.dataset.caption||'作品图片预览'}
+  openDialog();if(isVideo)dialogVideo.play().catch(()=>{});
 }));
+dialogPrev.addEventListener('click',()=>activeGallery&&setGalleryImage(activeGalleryIndex-1));
+dialogNext.addEventListener('click',()=>activeGallery&&setGalleryImage(activeGalleryIndex+1));
+document.addEventListener('keydown',e=>{if(!dialog.open||!activeGallery)return;if(e.key==='ArrowLeft')setGalleryImage(activeGalleryIndex-1);if(e.key==='ArrowRight')setGalleryImage(activeGalleryIndex+1)});
+document.querySelectorAll('[data-gallery-scroll]').forEach(button=>button.addEventListener('click',()=>{const track=button.closest('.horizontal-gallery').querySelector('.gallery-track');track.scrollBy({left:Number(button.dataset.galleryScroll)*track.clientWidth*.82,behavior:'smooth'})}));
 dialogVideo.addEventListener('loadedmetadata',()=>{const total=Math.round(dialogVideo.duration);dialogStatus.textContent=`FULL FILM READY · ${Math.floor(total/60).toString().padStart(2,'0')}:${(total%60).toString().padStart(2,'0')}`});
 dialogVideo.addEventListener('error',()=>{dialogStatus.textContent='PLAYER ERROR · USE ORIGINAL FILE LINK'});
-function closeDialog(){dialogVideo.pause();dialogVideo.removeAttribute('src');dialogVideo.load();dialogOpen.hidden=true;dialog.close()}
+function closeDialog(){dialogVideo.pause();dialogVideo.removeAttribute('src');dialogVideo.load();activeGallery=null;dialogPrev.hidden=true;dialogNext.hidden=true;dialogOpen.hidden=true;dialog.close()}
 dialog.querySelector('.lightbox-close').addEventListener('click',closeDialog);
 dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDialog()});
