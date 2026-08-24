@@ -6,6 +6,19 @@ const canvas = document.querySelector('#carousel-canvas');
 const loading = document.querySelector('.canvas-loading');
 const prefersReducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+const progressRail = document.createElement('div');
+progressRail.className = 'page-progress';
+progressRail.setAttribute('aria-hidden', 'true');
+progressRail.innerHTML = '<i></i>';
+document.body.append(progressRail);
+const updatePageProgress = () => {
+  const distance = document.documentElement.scrollHeight - innerHeight;
+  progressRail.style.setProperty('--progress', `${distance > 0 ? (scrollY / distance) * 100 : 0}%`);
+};
+addEventListener('scroll', updatePageProgress, { passive: true });
+addEventListener('resize', updatePageProgress);
+updatePageProgress();
+
 hero.addEventListener('pointermove', (event) => {
   const rect = hero.getBoundingClientRect();
   root.style.setProperty('--mx', `${((event.clientX - rect.left) / rect.width) * 100}%`);
@@ -178,6 +191,22 @@ filterButtons.forEach(button=>button.addEventListener('click',()=>setFilter(butt
 
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+if (!prefersReducedMotion) {
+  document.querySelectorAll('.project').forEach(card => {
+    card.addEventListener('pointermove', event => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+      card.style.setProperty('--tilt-x', `${(-y * 1.1).toFixed(2)}deg`);
+      card.style.setProperty('--tilt-y', `${(x * 1.1).toFixed(2)}deg`);
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.removeProperty('--tilt-x');
+      card.style.removeProperty('--tilt-y');
+    });
+  });
+}
 
 const dialog=document.querySelector('.lightbox'), dialogImage=dialog.querySelector('img'), dialogVideo=dialog.querySelector('video'), dialogCaption=dialog.querySelector('.lightbox-caption'), dialogType=dialog.querySelector('.lightbox-status span'), dialogStatus=dialog.querySelector('.lightbox-status strong'), dialogOpen=dialog.querySelector('.lightbox-open'), dialogPrev=dialog.querySelector('.lightbox-prev'), dialogNext=dialog.querySelector('.lightbox-next');
 const gallerySets={
