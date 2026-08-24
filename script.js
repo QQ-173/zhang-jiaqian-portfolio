@@ -1,5 +1,3 @@
-import * as THREE from './vendor/three.module.min.js';
-
 const root = document.documentElement;
 const hero = document.querySelector('.hero');
 const canvas = document.querySelector('#carousel-canvas');
@@ -25,6 +23,7 @@ hero.addEventListener('pointermove', (event) => {
   root.style.setProperty('--my', `${((event.clientY - rect.top) / rect.height) * 100}%`);
 });
 
+if (canvas) {
 const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(0xf1efe8, 10, 24);
 const camera = new THREE.PerspectiveCamera(34, 1, .1, 100);
@@ -174,6 +173,7 @@ function render(){
   renderer.render(scene,camera);requestAnimationFrame(render);
 }
 loading.style.opacity='0';setTimeout(()=>loading.remove(),550);render();
+}
 
 document.querySelectorAll('.floating-tag').forEach(tag=>{
   let drag=false,sx=0,sy=0,ox=0,oy=0;
