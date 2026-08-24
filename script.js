@@ -6,6 +6,19 @@ if (!reducedMotion && matchMedia('(pointer:fine)').matches) {
     root.style.setProperty('--mx', `${event.clientX}px`);
     root.style.setProperty('--my', `${event.clientY}px`);
   }, { passive: true });
+
+  const heroArt = document.querySelector('.hero-art');
+  heroArt?.addEventListener('pointermove', (event) => {
+    const bounds = heroArt.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width - .5) * 12;
+    const y = ((event.clientY - bounds.top) / bounds.height - .5) * 12;
+    heroArt.style.setProperty('--art-x', x.toFixed(2));
+    heroArt.style.setProperty('--art-y', y.toFixed(2));
+  });
+  heroArt?.addEventListener('pointerleave', () => {
+    heroArt.style.setProperty('--art-x', '0');
+    heroArt.style.setProperty('--art-y', '0');
+  });
 }
 
 const progress = document.querySelector('.page-progress i');
