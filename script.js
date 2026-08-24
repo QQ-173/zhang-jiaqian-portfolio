@@ -210,7 +210,10 @@ if (!prefersReducedMotion) {
 
 const dialog=document.querySelector('.lightbox'), dialogImage=dialog.querySelector('img'), dialogVideo=dialog.querySelector('video'), dialogCaption=dialog.querySelector('.lightbox-caption'), dialogType=dialog.querySelector('.lightbox-status span'), dialogStatus=dialog.querySelector('.lightbox-status strong'), dialogOpen=dialog.querySelector('.lightbox-open'), dialogPrev=dialog.querySelector('.lightbox-prev'), dialogNext=dialog.querySelector('.lightbox-next');
 const gallerySets={
-  emox:Array.from({length:16},(_,i)=>({src:`assets/emox-gallery-${String(i+1).padStart(2,'0')}.jpg`,caption:`EMOX 心理产品视觉系统 · ${String(i+1).padStart(2,'0')} / 16`})),
+  emoxInternship:[
+    {src:'assets/emox-internship-output-01.jpg',caption:'EMOX 实习产出 · 公众号图文 / H5详情页 / B端展会内容 · 01 / 02'},
+    {src:'assets/emox-internship-output-02.jpg',caption:'EMOX 实习产出 · AI口播视频 / 抖音心理学短视频 · 02 / 02'}
+  ],
   mood:[
     {src:'assets/mood-01.jpg',caption:'古建空间气氛设定 · 室内生活空间 · 01 / 04'},
     {src:'assets/mood-02.jpg',caption:'古建空间气氛设定 · 室内戏台 · 02 / 04'},
