@@ -1,2 +1,26 @@
-# zhang-jiaqian-portfolio
-Zhang Jiaqian — Creative Visual Portfolio
+# 张家倩 · Creative Portfolio
+
+按已确认的稿定红黑作品集改版，采用原生 HTML / CSS / JavaScript，可直接通过 GitHub Pages 发布，无需构建或第三方播放器。
+
+## 浏览结构
+
+共 11 个主章节：封面、目录、关于、两页心动 × TapTap、两页点点互动、白蛇、遗迹花园、手绘分镜、渔声。原网页的其余作品保留在末尾可展开的「更多创作存档」。
+
+- 所有视频按点击加载，保留原片完整时长，支持移动端原生播放和全屏。
+- 同时只播放一段视频，避免声音重叠。
+- 手绘分镜可放大查看、按顺序切换，支持键盘左右箭头与 Esc。
+- 桌面端保留作品集的横版图文关系，手机端重新排版为纵向阅读。
+- 内容、文案与作品顺序在 `index.html`；视觉样式在 `styles.css`；播放器、章节翻阅与图片预览在 `script.js`。
+- 修改 CSS 或 JS 后更新 HTML 里的版本号，避免浏览器使用旧缓存。
+
+## 预览
+
+在项目目录运行 `python3 -m http.server 8790`，打开 `http://127.0.0.1:8790`。
+
+## 字体
+
+红色手写标题使用 Pinyon Script（SIL Open Font License），字体文件及许可证位于 assets 目录。中文优先使用设备上的思源黑体、苹方或微软雅黑。
+
+## 发布
+
+GitHub Pages 从本仓库 main 分支根目录提供文件。将改动后的 HTML、CSS、JS 与新增 assets 一并上传；保留 `.nojekyll` 及已有媒体文件。
